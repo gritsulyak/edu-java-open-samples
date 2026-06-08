@@ -19,4 +19,4 @@ $ docker compose exec postgres-a psql -U user -d payments
 \d tablename
 select * from <tablename> limit 10, etc here
 
-$ docker compose exec postgres-b psql -U user -d payments
+$ docker compose exec postgres-b psql -U user -d billing

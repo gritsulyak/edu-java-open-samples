@@ -28,7 +28,7 @@ public class OutboxDispatchService {
 
     @Scheduled(fixedDelayString = "${outbox.worker.interval-ms:500}")
     public void dispatch() {
-        List<OutboxEvent> events = outboxRepository.findUnprocessed(batchSize);
+        List<OutboxEvent> events = outboxRepository.findUnprocessedForUpdate(batchSize);
         if (events.isEmpty()) return;
 
         log.debug("Dispatching {} outbox events", events.size());

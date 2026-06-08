@@ -33,7 +33,7 @@ class OutboxDispatchServiceTest {
     @Test
     @DisplayName("dispatch() publishes each event and marks processed")
     void dispatch_publishesAndMarks() {
-        when(outboxRepository.findUnprocessed(anyInt()))
+        when(outboxRepository.findUnprocessedForUpdate(anyInt()))
                 .thenReturn(List.of(event(1L), event(2L)));
 
         service.dispatch();
@@ -46,7 +46,7 @@ class OutboxDispatchServiceTest {
     @Test
     @DisplayName("dispatch() skips mark when publish fails")
     void dispatch_publishFails_doesNotMark() {
-        when(outboxRepository.findUnprocessed(anyInt()))
+        when(outboxRepository.findUnprocessedForUpdate(anyInt()))
                 .thenReturn(List.of(event(10L)));
         doThrow(new RuntimeException("kafka down")).when(eventPublisher).publish(any());
 
@@ -58,7 +58,7 @@ class OutboxDispatchServiceTest {
     @Test
     @DisplayName("dispatch() does nothing when no unprocessed events")
     void dispatch_emptyList_noInteractions() {
-        when(outboxRepository.findUnprocessed(anyInt())).thenReturn(List.of());
+        when(outboxRepository.findUnprocessedForUpdate(anyInt())).thenReturn(List.of());
 
         service.dispatch();
 

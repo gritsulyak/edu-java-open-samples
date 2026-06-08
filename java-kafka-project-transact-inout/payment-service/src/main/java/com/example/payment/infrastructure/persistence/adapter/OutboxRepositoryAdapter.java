@@ -30,7 +30,7 @@ public class OutboxRepositoryAdapter implements OutboxRepository {
     }
 
     @Override
-    public List<OutboxEvent> findUnprocessed(int limit) {
+    public List<OutboxEvent> findUnprocessedForUpdate(int limit) {
         return jpaRepository.findUnprocessed(limit).stream()
                 .map(this::toDomain)
                 .toList();

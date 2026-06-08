@@ -1,0 +1,22 @@
+transactional inbox/outbox demo
+
+docker compose up -d --build --force-recreate
+
+# in separate xterm
+docker compose up
+# check errors here
+
+# in another xterm
+curl -s -o /dev/null -w "%{http_code}" \
+    -X POST http://localhost:8081/payments \
+    -H "Content-Type: application/json" \
+    -d "{\"id\":\"pay-$(date +%s%N)-${i}\",\"amount\":$(( RANDOM % 1000 + 1 ))}"
+
+# in separate xterm
+$ docker compose exec postgres-a psql -U user -d payments
+
+\dt
+\d tablename
+select * from <tablename> limit 10, etc here
+
+$ docker compose exec postgres-b psql -U user -d payments

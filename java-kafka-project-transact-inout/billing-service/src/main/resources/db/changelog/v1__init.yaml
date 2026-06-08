@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-inbox
+      author: dev
+      changes:
+        - createTable:
+            tableName: inbox
+            columns:
+              - column:
+                  name: message_id
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: received_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2-create-billing
+      author: dev
+      changes:
+        - createTable:
+            tableName: billing
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: amount
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMPTZ
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false

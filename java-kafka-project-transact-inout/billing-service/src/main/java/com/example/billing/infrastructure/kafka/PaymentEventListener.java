@@ -22,7 +22,7 @@ public class PaymentEventListener {
     public void onMessage(ConsumerRecord<String, String> record, Acknowledgment ack) {
         String messageId = record.key();
         log.debug("Received message key={} partition={} offset={}",
-                  messageId, record.partition(), record.offset());
+                messageId, record.partition(), record.offset());
 
         try {
             PaymentEvent event = objectMapper.readValue(record.value(), PaymentEvent.class);

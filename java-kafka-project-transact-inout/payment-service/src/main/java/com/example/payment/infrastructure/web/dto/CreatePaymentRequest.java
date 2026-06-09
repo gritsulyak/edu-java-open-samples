@@ -5,5 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 
 public record CreatePaymentRequest(
         @NotBlank String id,
-        @Min(1)   long   amount
-) {}
+        @Min(1) long amount
+) {
+}

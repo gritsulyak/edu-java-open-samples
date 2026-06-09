@@ -17,10 +17,13 @@ import static org.mockito.Mockito.*;
 @DisplayName("ProcessPaymentEventService — unit")
 class ProcessPaymentEventServiceTest {
 
-    @Mock InboxRepository   inboxRepository;
-    @Mock BillingRepository billingRepository;
+    @Mock
+    InboxRepository inboxRepository;
+    @Mock
+    BillingRepository billingRepository;
 
-    @InjectMocks ProcessPaymentEventService service;
+    @InjectMocks
+    ProcessPaymentEventService service;
 
     private final PaymentEvent event = new PaymentEvent("pay-1", 100L, "2024-01-01T00:00:00Z");
 

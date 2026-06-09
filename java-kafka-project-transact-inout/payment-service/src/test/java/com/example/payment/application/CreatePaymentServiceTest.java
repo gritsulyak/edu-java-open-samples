@@ -5,7 +5,6 @@ import com.example.payment.domain.model.Payment;
 import com.example.payment.domain.port.out.OutboxRepository;
 import com.example.payment.domain.port.out.PaymentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,16 +14,20 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("CreatePaymentService — unit")
 class CreatePaymentServiceTest {
 
-    @Mock  PaymentRepository paymentRepository;
-    @Mock  OutboxRepository  outboxRepository;
-    @Spy   ObjectMapper      objectMapper = new ObjectMapper();
+    @Mock
+    PaymentRepository paymentRepository;
+    @Mock
+    OutboxRepository outboxRepository;
+    @Spy
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @InjectMocks
     CreatePaymentService service;
@@ -38,7 +41,7 @@ class CreatePaymentServiceTest {
         assertThat(result.amount()).isEqualTo(300L);
 
         verify(paymentRepository, times(1)).save(argThat(p -> p.id().equals("pay-42")));
-        verify(outboxRepository,  times(1)).save(argThat(e ->
+        verify(outboxRepository, times(1)).save(argThat(e ->
                 e.aggregateId().equals("pay-42") && e.eventType().equals("PaymentCreated")));
     }
 

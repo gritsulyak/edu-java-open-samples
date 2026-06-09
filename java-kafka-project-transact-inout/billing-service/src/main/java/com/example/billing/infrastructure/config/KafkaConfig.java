@@ -24,14 +24,14 @@ public class KafkaConfig {
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(Map.of(
-                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,        bootstrapServers,
-                ConsumerConfig.GROUP_ID_CONFIG,                 groupId,
-                ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,        "earliest",
-                ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,       false,
-                ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG,     300_000,
-                ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG,       30_000,
-                ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG,    3_000,
-                ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,   StringDeserializer.class,
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
+                ConsumerConfig.GROUP_ID_CONFIG, groupId,
+                ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest",
+                ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false,
+                ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 300_000,
+                ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 30_000,
+                ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 3_000,
+                ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class
         ));
     }

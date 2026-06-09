@@ -47,6 +47,6 @@ public class OutboxRepositoryAdapter implements OutboxRepository {
 
     private OutboxEvent toDomain(OutboxJpaEntity e) {
         return new OutboxEvent(e.getId(), e.getAggregateId(), e.getEventType(),
-                               e.getPayload(), e.getCreatedAt(), e.getProcessedAt());
+                e.getPayload(), e.getCreatedAt(), e.getProcessedAt());
     }
 }

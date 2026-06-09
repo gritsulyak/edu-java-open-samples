@@ -26,8 +26,8 @@ public class KafkaEventPublisher implements EventPublisher {
                         log.error("Delivery failed for aggregateId={}: {}", event.aggregateId(), ex.getMessage());
                     } else {
                         log.debug("Delivered aggregateId={} to partition {}",
-                                  event.aggregateId(),
-                                  result.getRecordMetadata().partition());
+                                event.aggregateId(),
+                                result.getRecordMetadata().partition());
                     }
                 });
     }

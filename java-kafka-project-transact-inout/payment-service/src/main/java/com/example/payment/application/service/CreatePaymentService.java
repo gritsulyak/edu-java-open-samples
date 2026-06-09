@@ -17,9 +17,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CreatePaymentService implements CreatePaymentUseCase {
 
-    private final PaymentRepository  paymentRepository;
-    private final OutboxRepository   outboxRepository;
-    private final ObjectMapper       objectMapper;
+    private final PaymentRepository paymentRepository;
+    private final OutboxRepository outboxRepository;
+    private final ObjectMapper objectMapper;
 
     @Override
     @Transactional
@@ -37,10 +37,10 @@ public class CreatePaymentService implements CreatePaymentUseCase {
     private OutboxEvent buildOutboxEvent(Payment payment) {
         String payload = objectMapper.writeValueAsString(
                 Map.of("id", payment.id(),
-                       "amount", payment.amount(),
-                       "ts", payment.createdAt().toString()));
+                        "amount", payment.amount(),
+                        "ts", payment.createdAt().toString()));
 
         return new OutboxEvent(null, payment.id(), "PaymentCreated",
-                               payload, payment.createdAt(), null);
+                payload, payment.createdAt(), null);
     }
 }

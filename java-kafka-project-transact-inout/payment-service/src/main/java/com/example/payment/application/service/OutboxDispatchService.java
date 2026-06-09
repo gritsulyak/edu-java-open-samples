@@ -21,7 +21,7 @@ import java.util.List;
 public class OutboxDispatchService {
 
     private final OutboxRepository outboxRepository;
-    private final EventPublisher   eventPublisher;
+    private final EventPublisher eventPublisher;
 
     @Value("${outbox.worker.batch-size:100}")
     private int batchSize;

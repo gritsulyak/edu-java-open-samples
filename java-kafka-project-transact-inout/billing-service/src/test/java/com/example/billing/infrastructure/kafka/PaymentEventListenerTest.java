@@ -21,11 +21,15 @@ import static org.mockito.Mockito.*;
 @DisplayName("PaymentEventListener — unit")
 class PaymentEventListenerTest {
 
-    @Mock  ProcessPaymentEventUseCase useCase;
-    @Mock  Acknowledgment             ack;
-    @Spy   ObjectMapper               objectMapper = new ObjectMapper();
+    @Mock
+    ProcessPaymentEventUseCase useCase;
+    @Mock
+    Acknowledgment ack;
+    @Spy
+    ObjectMapper objectMapper = new ObjectMapper();
 
-    @InjectMocks PaymentEventListener listener;
+    @InjectMocks
+    PaymentEventListener listener;
 
     private ConsumerRecord<String, String> record(String key, String value) {
         return new ConsumerRecord<>("payments.created", 0, 0L, key, value);

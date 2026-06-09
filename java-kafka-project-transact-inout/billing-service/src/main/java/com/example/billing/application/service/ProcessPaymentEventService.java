@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ProcessPaymentEventService implements ProcessPaymentEventUseCase {
 
-    private final InboxRepository   inboxRepository;
+    private final InboxRepository inboxRepository;
     private final BillingRepository billingRepository;
 
     @Override

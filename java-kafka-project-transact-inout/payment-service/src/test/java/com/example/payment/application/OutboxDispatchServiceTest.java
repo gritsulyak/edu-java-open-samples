@@ -20,14 +20,17 @@ import static org.mockito.Mockito.*;
 @DisplayName("OutboxDispatchService — unit")
 class OutboxDispatchServiceTest {
 
-    @Mock OutboxRepository outboxRepository;
-    @Mock EventPublisher   eventPublisher;
+    @Mock
+    OutboxRepository outboxRepository;
+    @Mock
+    EventPublisher eventPublisher;
 
-    @InjectMocks OutboxDispatchService service;
+    @InjectMocks
+    OutboxDispatchService service;
 
     private OutboxEvent event(long id) {
         return new OutboxEvent(id, "agg-" + id, "PaymentCreated",
-                               "{}", Instant.now(), null);
+                "{}", Instant.now(), null);
     }
 
     @Test

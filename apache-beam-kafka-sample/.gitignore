@@ -1,0 +1,46 @@
+### JetBrains (IntelliJ IDEA) ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### VS Code ###
+.vscode/
+bin/
+*.code-workspace
+
+### Build Tools (Maven) ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.nextSnapshot
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# Если используете Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+### Build Tools (Gradle) ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### Log files ###
+*.log
+logs/
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Spring Boot ###
+*.jar
+*.war
+*.ear
+# Игнорируем файлы конфигурации с секретами
+application-local.properties
+application-local.yml
+
